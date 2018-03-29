@@ -25,9 +25,11 @@ If you agree to these terms, type "yes". If you type anything else your submissi
 
         if msg.content.lower() == 'yes':
             await ctx.send('<:greentick:359040809036677130> | Your bot has been submitted.')
+            review = self.bot.get_user(242346349859700736)
+            await review.send('Someone has submitted a bot: {}'.format(link))
         else:
             await ctx.send('<:redtick:359040808873099265> | Your bot submission was canceled.')
-
+	
     @submit.error
     async def submit_error(self, ctx, error):
         if isinstance(error, commands.CommandOnCooldown):
